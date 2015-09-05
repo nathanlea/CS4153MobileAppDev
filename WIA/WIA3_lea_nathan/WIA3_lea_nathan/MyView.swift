@@ -1,6 +1,6 @@
 //
-//  MyView.swift
-//  WIA3_lea_nathan
+//  File.swift
+//  GestureTest
 //
 //  Created by Nathan on 9/5/15.
 //  Copyright © 2015 Okstate. All rights reserved.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class MyView : UIView {
-    
+class MyView: UIView {
     override func drawRect(rect: CGRect) {
         
         let colorOrange = UIColor(red: 1.0, green: 0.65, blue: 0.0, alpha: 1.0)
@@ -86,10 +85,6 @@ class MyView : UIView {
             // Draw the text in a rect.
             text.drawInRect(CGRect(x:w - 60, y:h - 30, width:w + 75, height: h + 25), withAttributes: textFontAttributes)
         }
-        
+
     }
-    
-    
 }
-
-
