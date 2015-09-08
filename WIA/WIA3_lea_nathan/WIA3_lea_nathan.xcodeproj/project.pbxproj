@@ -14,7 +14,7 @@
 		D81BD8241B9B7A230088D8B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D81BD8221B9B7A230088D8B1 /* LaunchScreen.storyboard */; };
 		D81BD82F1B9B7A230088D8B1 /* WIA3_lea_nathanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81BD82E1B9B7A230088D8B1 /* WIA3_lea_nathanTests.swift */; };
 		D81BD83A1B9B7A230088D8B1 /* WIA3_lea_nathanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81BD8391B9B7A230088D8B1 /* WIA3_lea_nathanUITests.swift */; };
-		D81BD8481B9B7A540088D8B1 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81BD8471B9B7A540088D8B1 /* MyView.swift */; settings = {ASSET_TAGS = (); }; };
+		D898E4F51B9E615000F3EA49 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D898E4F41B9E615000F3EA49 /* CustomView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +48,7 @@
 		D81BD8351B9B7A230088D8B1 /* WIA3_lea_nathanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WIA3_lea_nathanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81BD8391B9B7A230088D8B1 /* WIA3_lea_nathanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIA3_lea_nathanUITests.swift; sourceTree = "<group>"; };
 		D81BD83B1B9B7A230088D8B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D81BD8471B9B7A540088D8B1 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		D898E4F41B9E615000F3EA49 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +104,8 @@
 				D81BD81D1B9B7A230088D8B1 /* Main.storyboard */,
 				D81BD8201B9B7A230088D8B1 /* Assets.xcassets */,
 				D81BD8221B9B7A230088D8B1 /* LaunchScreen.storyboard */,
-				D81BD8471B9B7A540088D8B1 /* MyView.swift */,
 				D81BD8251B9B7A230088D8B1 /* Info.plist */,
+				D898E4F41B9E615000F3EA49 /* CustomView.swift */,
 			);
 			path = WIA3_lea_nathan;
 			sourceTree = "<group>";
@@ -258,7 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D81BD8481B9B7A540088D8B1 /* MyView.swift in Sources */,
+				D898E4F51B9E615000F3EA49 /* CustomView.swift in Sources */,
 				D81BD81C1B9B7A230088D8B1 /* ViewController.swift in Sources */,
 				D81BD81A1B9B7A230088D8B1 /* AppDelegate.swift in Sources */,
 			);
@@ -485,6 +485,7 @@
 				D81BD8401B9B7A230088D8B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D81BD8411B9B7A230088D8B1 /* Build configuration list for PBXNativeTarget "WIA3_lea_nathanTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +494,7 @@
 				D81BD8431B9B7A230088D8B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D81BD8441B9B7A230088D8B1 /* Build configuration list for PBXNativeTarget "WIA3_lea_nathanUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +503,7 @@
 				D81BD8461B9B7A230088D8B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

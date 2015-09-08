@@ -1,14 +1,66 @@
 //
-//  File.swift
-//  GestureTest
+//  CustomView.swift
+//  WIA3_lea_nathan
 //
-//  Created by Nathan on 9/5/15.
+//  Created by Nathan on 9/7/15.
 //  Copyright © 2015 Okstate. All rights reserved.
 //
 
 import UIKit
 
-class MyView: UIView {
+class CustomView: UIView {
+    
+    var lastLocation:CGPoint = CGPointMake(0,0)
+    
+    // MARK: Initialization
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.backgroundColor = UIColor.clearColor()
+        
+        let panRecognizer = UIPanGestureRecognizer(target:self, action:"detectPan:")
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: "detectPinch:")
+        let rotateRecognizer = UIRotationGestureRecognizer(target: self, action: "detectRotate:")
+        self.gestureRecognizers = [panRecognizer, pinchRecognizer, rotateRecognizer]
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func detectPan(recognizer:UIPanGestureRecognizer) {
+        let translation  = recognizer.translationInView(self.superview!)
+        self.center = CGPointMake(lastLocation.x + translation.x, lastLocation.y + translation.y)
+    }
+    
+    func detectPinch(recognizer:UIPinchGestureRecognizer) {
+        let scale = recognizer.scale
+        // Resize the image based on the pinch scale.
+        if let _ = recognizer.view {
+            self.transform = CGAffineTransformScale(self.transform, scale, scale)
+        }
+        // Reset the pinch scale to 1 for incremental processing.
+        recognizer.scale = 1
+
+    }
+    
+    func detectRotate(recognizer:UIRotationGestureRecognizer) {
+        if let _ = recognizer.view {
+            self.transform = CGAffineTransformRotate(self.transform, recognizer.rotation)
+        }
+        recognizer.rotation = 0;
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        // Promote the touched view
+        self.superview?.bringSubviewToFront(self)
+        
+        // Remember original location
+        lastLocation = self.center
+
+    }
+    
     override func drawRect(rect: CGRect) {
         
         let colorOrange = UIColor(red: 1.0, green: 0.65, blue: 0.0, alpha: 1.0)
@@ -85,6 +137,8 @@ class MyView: UIView {
             // Draw the text in a rect.
             text.drawInRect(CGRect(x:w - 60, y:h - 30, width:w + 75, height: h + 25), withAttributes: textFontAttributes)
         }
-
+        
     }
+
+
 }
