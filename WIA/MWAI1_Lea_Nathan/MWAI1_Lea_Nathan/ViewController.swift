@@ -31,7 +31,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = stateName
-//        StateImageView.image =
+        
+        //Instead of inflating app size we are going to just load these from the web!
+        
+        //This method taken from Dr. Mayfield Sept 24 handout
         
         // Create the NSURL object for the image path.
         if let url = NSURL(string: imageURLString+stateImagePath+".gif") {
@@ -50,7 +53,6 @@ class ViewController: UIViewController {
             }
         }
 
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
