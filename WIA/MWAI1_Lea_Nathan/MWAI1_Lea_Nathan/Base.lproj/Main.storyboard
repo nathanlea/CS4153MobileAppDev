@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SS6-ux-3dP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--State-->
@@ -16,11 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOa-DE-QSn">
-                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fOa-DE-QSn">
+                                <rect key="frame" x="20" y="52" width="560" height="496"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fOa-DE-QSn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1Hf-yn-MH9"/>
+                            <constraint firstItem="fOa-DE-QSn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="dsB-hJ-kHZ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="fOa-DE-QSn" secondAttribute="leading" id="uW8-Fd-kbS"/>
+                            <constraint firstItem="fOa-DE-QSn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ybs-Ka-gBM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="State" id="ISp-vd-wn8">
                         <barButtonItem key="backBarButtonItem" title="US States" id="s31-RZ-XRP"/>
