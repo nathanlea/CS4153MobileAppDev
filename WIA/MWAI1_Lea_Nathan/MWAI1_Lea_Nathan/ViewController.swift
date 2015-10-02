@@ -13,8 +13,14 @@ class ViewController: UIViewController {
     var stateName = ""
     var stateImagePath = ""
 
+    @IBOutlet weak var StateImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = stateName
+//        StateImageView.image =
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
