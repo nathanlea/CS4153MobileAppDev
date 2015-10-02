@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var stateName = ""
+    var stateImagePath = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
