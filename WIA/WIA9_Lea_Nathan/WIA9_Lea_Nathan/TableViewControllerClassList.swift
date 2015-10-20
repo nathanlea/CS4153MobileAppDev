@@ -9,7 +9,12 @@
 import UIKit
 
 class TableViewControllerClassList: UITableViewController {
-
+    
+    var student1:(name: String, cwid: Int) = ("",1)
+    var student2:(name: String, cwid: Int) = ("",2)
+    var student3:(name: String, cwid: Int) = ("",3)
+    var students:[(name: String, cwid: Int)] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,23 +34,22 @@ class TableViewControllerClassList: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 3
     }
-
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("students", forIndexPath: indexPath)
+        cell.textLabel?.text = students[indexPath.item].name
+        cell.detailTextLabel?.text = String(students[indexPath.item].cwid)
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

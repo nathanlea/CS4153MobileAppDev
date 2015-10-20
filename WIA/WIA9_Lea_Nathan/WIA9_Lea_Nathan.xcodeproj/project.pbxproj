@@ -15,6 +15,8 @@
 		D865D01B1BD5EEAE0079333F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D865D0191BD5EEAE0079333F /* LaunchScreen.storyboard */; };
 		D865D0261BD5EEAE0079333F /* WIA9_Lea_NathanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865D0251BD5EEAE0079333F /* WIA9_Lea_NathanTests.swift */; };
 		D865D0311BD5EEAF0079333F /* WIA9_Lea_NathanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865D0301BD5EEAF0079333F /* WIA9_Lea_NathanUITests.swift */; };
+		D865D03F1BD5EF210079333F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865D03E1BD5EF210079333F /* TableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D865D0411BD5FAE70079333F /* TableViewControllerClassList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D865D0401BD5FAE70079333F /* TableViewControllerClassList.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D865D02C1BD5EEAF0079333F /* WIA9_Lea_NathanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WIA9_Lea_NathanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D865D0301BD5EEAF0079333F /* WIA9_Lea_NathanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIA9_Lea_NathanUITests.swift; sourceTree = "<group>"; };
 		D865D0321BD5EEAF0079333F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D865D03E1BD5EF210079333F /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		D865D0401BD5FAE70079333F /* TableViewControllerClassList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerClassList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				D865D00D1BD5EEAE0079333F /* AppDelegate.swift */,
 				D865D00F1BD5EEAE0079333F /* ViewController.swift */,
 				D865D0111BD5EEAE0079333F /* Main.storyboard */,
+				D865D0401BD5FAE70079333F /* TableViewControllerClassList.swift */,
+				D865D03E1BD5EF210079333F /* TableViewController.swift */,
 				D865D0171BD5EEAE0079333F /* Assets.xcassets */,
 				D865D0191BD5EEAE0079333F /* LaunchScreen.storyboard */,
 				D865D01C1BD5EEAE0079333F /* Info.plist */,
@@ -261,6 +267,8 @@
 				D865D0101BD5EEAE0079333F /* ViewController.swift in Sources */,
 				D865D0161BD5EEAE0079333F /* WIA9_Lea_Nathan.xcdatamodeld in Sources */,
 				D865D00E1BD5EEAE0079333F /* AppDelegate.swift in Sources */,
+				D865D0411BD5FAE70079333F /* TableViewControllerClassList.swift in Sources */,
+				D865D03F1BD5EF210079333F /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
