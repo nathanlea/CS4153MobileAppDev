@@ -10,8 +10,15 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
+    @IBAction func ViewOrderSummary(sender: AnyObject) {
+        print("BUTTON TOUCHED")
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.separatorStyle = .None
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,7 +41,7 @@ class TableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 5
     }
 
     
@@ -43,8 +50,8 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
         
-        cell.contentView.layer.borderWidth = 1
-        cell.contentView.layer.borderColor = UIColor.blackColor().CGColor//UIColor(red: 227, green: 134, blue: 114, alpha: 1).CGColor
+        //cell.contentView.layer.borderWidth = 1
+        //cell.contentView.layer.borderColor = UIColor.blackColor().CGColor//UIColor(red: 227, green: 134, blue: 114, alpha: 1).CGColor
         
 
         return cell
