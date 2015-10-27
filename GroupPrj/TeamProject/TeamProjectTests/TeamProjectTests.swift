@@ -2,12 +2,11 @@
 //  TeamProjectTests.swift
 //  TeamProjectTests
 //
-//  Created by LEA NATHAN H on 10/22/15.
+//  Created by Nathan on 10/26/15.
 //  Copyright © 2015 LEA NATHAN H. All rights reserved.
 //
 
 import XCTest
-@testable import TeamProject
 
 class TeamProjectTests: XCTestCase {
     

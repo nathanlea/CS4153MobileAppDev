@@ -13,6 +13,8 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -169,12 +171,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qmk-YZ-5a8" customClass="CVCalendarMenuView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="98" width="768" height="31"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="768" placeholderIntrinsicHeight="31" translatesAutoresizingMaskIntoConstraints="NO" id="Qmk-YZ-5a8" customClass="CVCalendarMenuView" customModule="CVCalendar">
+                                <rect key="frame" x="0.0" y="99" width="768" height="31"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="menuViewDelegate" destination="JD4-ov-ES0" id="WuL-3l-Mxt"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2t-gA-cP3" customClass="CVCalendarView" customModule="CVCalendar">
+                                <rect key="frame" x="0.0" y="129" width="768" height="53"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="calendarAppearanceDelegate" destination="JD4-ov-ES0" id="eL7-Of-1u3"/>
+                                    <outlet property="calendarDelegate" destination="JD4-ov-ES0" id="JkR-mU-VXf"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="January, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gub-fb-suS">
@@ -184,19 +195,25 @@
                                 <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2t-gA-cP3" customClass="CVCalendarView" customModule="CVCalendar">
-                                <rect key="frame" x="0.0" y="123" width="768" height="259"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bth-Ef-ePv">
+                                <rect key="frame" x="0.0" y="190" width="768" height="286"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="calendarAppearanceDelegate" destination="JD4-ov-ES0" id="eL7-Of-1u3"/>
-                                    <outlet property="calendarDelegate" destination="JD4-ov-ES0" id="JkR-mU-VXf"/>
-                                </connections>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kbL-nc-Tt8">
+                                <rect key="frame" x="0.0" y="484" width="768" height="496"/>
+                                <animations/>
+                                <connections>
+                                    <segue destination="fqO-FC-leZ" kind="embed" id="QVi-P7-6QA"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Reserve" width="748" id="gbc-rk-iUX"/>
+                    </toolbarItems>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="calendarView" destination="s2t-gA-cP3" id="dMS-jY-ah9"/>
@@ -240,13 +257,19 @@
         <!--Navigation Controller-->
         <scene sceneID="Wwh-vk-EbY">
             <objects>
-                <navigationController id="49t-N1-ZDH" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="49t-N1-ZDH" sceneMemberID="viewController">
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LJe-CC-Dhc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="e4x-oT-PIo">
+                        <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </toolbar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="794-C9-Alc"/>
                     </connections>
@@ -302,8 +325,97 @@
             </objects>
             <point key="canvasLocation" x="-1039" y="-621"/>
         </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Kxn-iJ-Hnt">
+            <objects>
+                <viewController id="fqO-FC-leZ" customClass="PageViewController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oyK-F9-KrQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="jsb-0f-kjc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a7w-2U-oa2">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="496"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="t7f-AD-6mP" kind="show" id="j4n-kV-Bmx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lWV-Sq-f0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="104" y="1509"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Y0l-Hy-IoT">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="PjW-TX-bfx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yuN-BN-TAo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="963" y="712"/>
+        </scene>
+        <!--Page Item Controller-->
+        <scene sceneID="9fy-v9-Gsw">
+            <objects>
+                <viewController storyboardIdentifier="PageContentViewController" id="t7f-AD-6mP" customClass="PageItemController" customModule="TeamProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nhq-Jo-6Hd"/>
+                        <viewControllerLayoutGuide type="bottom" id="VhD-AU-X6D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LDC-ab-RO7">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="496"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FrederickProfile" translatesAutoresizingMaskIntoConstraints="NO" id="6pT-hC-jOa">
+                                <rect key="frame" x="352" y="64" width="64" height="55"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuo-i3-d3J">
+                                <rect key="frame" x="311" y="20" width="146" height="36"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5jn-6g-q6a">
+                                <rect key="frame" x="187" y="165" width="395" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About John Smith" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ayj-CG-KbF">
+                                <rect key="frame" x="318" y="136" width="133" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VlE-Qw-iDv">
+                                <rect key="frame" x="265" y="127" width="239" height="1"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="aboutLabel" destination="Ayj-CG-KbF" id="A0T-8M-unS"/>
+                        <outlet property="bioTextView" destination="5jn-6g-q6a" id="NE9-U0-rWp"/>
+                        <outlet property="mugShotImageView" destination="6pT-hC-jOa" id="FZE-hG-4vI"/>
+                        <outlet property="nameLabel" destination="wuo-i3-d3J" id="Yxe-nT-bF7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H3n-6y-dkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="104" y="2180"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CypressRoom.png" width="250" height="125"/>
+        <image name="FrederickProfile" width="46" height="47"/>
     </resources>
 </document>
