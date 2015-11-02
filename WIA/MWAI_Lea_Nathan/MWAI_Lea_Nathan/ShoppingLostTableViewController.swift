@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
 class ShoppingLostTableViewController: UITableViewController {
     
     var list:[(name: String, checked: Bool, quantity: Int)] = []
     
-    var courses = [NSManagedObject]()
+    //var items = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,7 @@ class ShoppingLostTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItem = addButton
         
         list.append(("Title", false, 1))
-        
-        
+        /*
         // Get the app delegate.
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         // Get the managed object context from the app delegate.
@@ -71,9 +70,7 @@ class ShoppingLostTableViewController: UITableViewController {
             catch let error as NSError {
                 print("Cannot save - \(error), \(error.userInfo)")
             }
-        }
-        
-        
+        } */
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -83,8 +80,8 @@ class ShoppingLostTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        // Get the app delegate.
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    // Get the app delegate.
+    /*    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         // Get the managed object context from the app delegate.
         let context = appDelegate.managedObjectContext
         
@@ -94,12 +91,12 @@ class ShoppingLostTableViewController: UITableViewController {
         // Fetch the records.
         do {
             let records = try context.executeFetchRequest(fetchRequest)
-            courses = records as! [NSManagedObject]
+            items = records as! [NSManagedObject]
         }
         catch let error as NSError
         {
             print("Cannot fetch - \(error), \(error.userInfo)")
-        }
+        }*/
     }
     
     
@@ -151,6 +148,21 @@ class ShoppingLostTableViewController: UITableViewController {
         
     }
     
+    @IBAction func doUnwind(sender:UIStoryboardSegue) {
+    }
+    
+    
+    override func canPerformUnwindSegueAction(action: Selector, fromViewController: UIViewController, withSender sender: AnyObject) -> Bool {
+        return true;
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(segue.identifier)
+        if segue.identifier == "unwind" {
+            print("\(self) \(__FUNCTION__)")
+            unwindForSegue(segue, towardsViewController: self)
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -187,12 +199,12 @@ class ShoppingLostTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
+    }*/
 }

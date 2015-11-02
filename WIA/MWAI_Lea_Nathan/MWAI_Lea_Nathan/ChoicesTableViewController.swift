@@ -11,21 +11,27 @@ import CoreData
 
 class ChoicesTableViewController: UITableViewController {
 
+    @IBOutlet var UItableView: UITableView!
+    
     var choices = [NSManagedObject]()
     
     var initialData = [
-        (name: "Apples"),
-        (name: "Bread"),
-        (name: "Butter"),
-        (name: "Cheese"),
-        (name: "Eggs"),
-        (name: "Grapes"),
-        (name: "Ice Cream"),
-        (name: "Milk"),
-        (name: "Oranges"),
-        (name: "Oreos")
+        "Apples",
+        "Bread",
+        "Butter",
+        "Cheese",
+        "Eggs",
+        "Grapes",
+        "Ice Cream",
+        "Milk",
+        "Oranges",
+        "Oreos"
     ]
     
+    var tableData : [[NSManagedObject]] = [[]]
+    
+    var tableSectionHeaders : [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +40,6 @@ class ChoicesTableViewController: UITableViewController {
         let addButton : UIBarButtonItem = UIBarButtonItem( barButtonSystemItem : .Add, target: self, action: "addToShoppingList" )
         self.navigationItem.rightBarButtonItem = addButton
 
-        
         // Get the app delegate.
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         // Get the managed object context from the app delegate.
@@ -68,7 +73,7 @@ class ChoicesTableViewController: UITableViewController {
             insertIntoManagedObjectContext: context)
             
             // Populate the new managed object with course data.
-            choices.setValue(data, forKey: "name")
+            course.setValue(data, forKey: "name")
             }
             
             // Save the managed object context contents to the database.
@@ -91,17 +96,41 @@ class ChoicesTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         // Get the app delegate.
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+       let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         // Get the managed object context from the app delegate.
         let context = appDelegate.managedObjectContext
         
         // Create a fetch request.
         let fetchRequest = NSFetchRequest(entityName: "Choices")
         
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let sortDescriptors = [sortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        
         // Fetch the records.
         do {
             let records = try context.executeFetchRequest(fetchRequest)
             choices = records as! [NSManagedObject]
+            var j = 0;
+            var currentLetter = "" //Start this at null to make sure we don't add A if it isn't valid
+            //Organize the records
+            for(var i = 0; i < choices.count; i++) {
+                var nameString = choices[i].valueForKey("name") as! String
+                let firstLetter = String(nameString.removeAtIndex(nameString.startIndex))
+                if( i == 0 || currentLetter == firstLetter ) {
+                    tableData[j].append(choices[i])
+                    currentLetter = firstLetter
+                    if(i==0) {
+                        tableSectionHeaders.append(firstLetter)
+                    }
+                } else {
+                    j++;
+                    currentLetter = firstLetter;
+                    tableSectionHeaders.append(firstLetter)
+                    tableData.append([])
+                    tableData[j].append(choices[i])
+                }
+            }
         }
         catch let error as NSError
         {
@@ -118,28 +147,43 @@ class ChoicesTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return tableData.count
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 
+        return tableData[section].count
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableSectionHeaders[section]
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("choices", forIndexPath: indexPath)
 
         //cell.textLabel!.text = (courses[indexPath.row].valueForKey("deptAbbr") as! String) + String(courses[indexPath.row].valueForKey("courseNum")!)
-        
-        cell.textLabel!.text = choices[indexPath.item].valueForKey("name") as! String
+        cell.textLabel!.text = tableData[indexPath.section][indexPath.row].valueForKey("name") as? String //choices[indexPath.item].valueForKey("name") as! String
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
+   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("unwind2")
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print(6)
+        print(segue.identifier)
+        if segue.identifier == "unwind" {
+            print("\(self) \(__FUNCTION__)")
+        }
+    }
+    
+    /*
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {*/
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
