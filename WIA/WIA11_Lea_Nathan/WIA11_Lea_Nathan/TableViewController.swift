@@ -17,7 +17,8 @@ var elements: [Dictionary<String, String>] = []
         
         // Note that, beginning with iOS 9, we must use "HTTPS"
         // rather than "HTTP".
-        let postEndpoint =     "https://cs.okstate.edu/~user/trains.php/user/password/dbname/fall15_trains"
+        let postEndpoint =
+            "https://cs.okstate.edu/~user/trains.php/user/password/dbname/fall15_trains"
                     
             // Set up the URL instance for the service.
             guard let url = NSURL(string: postEndpoint) else {
@@ -98,8 +99,8 @@ var elements: [Dictionary<String, String>] = []
         let cell = tableView.dequeueReusableCellWithIdentifier("trains", forIndexPath: indexPath)
     
         //print(self.elements[i]["number"])
-        cell.textLabel?.text=self.elements[indexPath.item]["number"]
-        cell.detailTextLabel?.text = self.elements[indexPath.item]["roadName"]! + " - " + self.elements[indexPath.item]["type"]!
+        cell.textLabel?.text=self.elements[indexPath.item]["roadName"]! + " " + self.elements[indexPath.item]["number"]!
+        cell.detailTextLabel?.text = self.elements[indexPath.item]["type"]!
 
         // Configure the cell...
 

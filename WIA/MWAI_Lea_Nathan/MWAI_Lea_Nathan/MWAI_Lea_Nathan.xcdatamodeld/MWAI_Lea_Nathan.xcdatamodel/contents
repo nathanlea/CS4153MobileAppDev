@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Automatic">
+    <entity name="Choices" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShoppingList" syncable="YES"/>
+    </entity>
+    <entity name="ShoppingList" syncable="YES">
+        <attribute name="countOfItem" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Choices" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ShoppingList" positionX="-425" positionY="18" width="128" height="73"/>
+        <element name="Choices" positionX="-54" positionY="-9" width="128" height="75"/>
+    </elements>
+</model>
