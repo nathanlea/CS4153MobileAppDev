@@ -15,6 +15,20 @@ class ShoppingLostTableViewController: UITableViewController {
     
     //var items = [NSManagedObject]()
     
+    var addedItem : String = "" {
+        didSet {
+            for(var i = 0; i < list.count; i++) {
+                if(list[i].name == addedItem) {
+                    list[i].quantity++
+                    self.tableView.reloadData()
+                    return;
+                }
+            }
+            list.append((addedItem, false, 1))
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,7 +37,7 @@ class ShoppingLostTableViewController: UITableViewController {
         let addButton : UIBarButtonItem = UIBarButtonItem( barButtonSystemItem : .Add, target: self, action: "addToShoppingList" )
         self.navigationItem.rightBarButtonItem = addButton
         
-        list.append(("Title", false, 1))
+        //list.append(("Title", false, 1))
         /*
         // Get the app delegate.
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -125,6 +139,12 @@ class ShoppingLostTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ShoppingListItem", forIndexPath: indexPath)
         
+        if(list[indexPath.item].checked) {
+            cell.imageView?.image = UIImage(imageLiteral: "Box-CheckMark")
+        } else {
+            cell.imageView?.image = UIImage(imageLiteral: "Box-NoCheckMark")
+        }
+        
         cell.textLabel?.text = list[indexPath.item].name
         cell.detailTextLabel?.text = String(list[indexPath.item].quantity)
         
@@ -135,17 +155,50 @@ class ShoppingLostTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        let alert = UIAlertController(title: "", message: "Delete how many?", preferredStyle: UIAlertControllerStyle.Alert)
+        if(list[indexPath.item].quantity>1) {
+        alert.addAction(UIAlertAction(title: "1", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                //tableView.beginUpdates()
+                self.list[indexPath.item].quantity-=1
+                //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                //tableView.endUpdates()
+                tableView.reloadData()
+            case .Cancel:
+                print("cancel")
+                
+            case .Destructive:
+                print("destructive")
+            }
+        }))
+        }
+        alert.addAction(UIAlertAction(title: "All", style: .Default, handler: { action in
+            switch action.style{
+            case .Default:
+                if(editingStyle == UITableViewCellEditingStyle.Delete) {
+                    self.list.removeAtIndex(indexPath.row)
+                    tableView.beginUpdates()
+                    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+                    tableView.endUpdates()
+                }            case .Cancel:
+                print("cancel - No")
+            case .Destructive:
+                print("destructive - No")
+            }
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ShoppingListItem", forIndexPath: indexPath)
         if(!list[indexPath.item].checked) {
-            cell.imageView?.image = UIImage(imageLiteral: "Box-CheckMark")
             list[indexPath.item].checked = true
         } else {
-            cell.imageView?.image = UIImage(imageLiteral: "Box-NoCheckMark")
             list[indexPath.item].checked = false
         }
         self.tableView.reloadData()
-        
     }
     
     @IBAction func doUnwind(sender:UIStoryboardSegue) {
@@ -161,6 +214,8 @@ class ShoppingLostTableViewController: UITableViewController {
         if segue.identifier == "unwind" {
             print("\(self) \(__FUNCTION__)")
             unwindForSegue(segue, towardsViewController: self)
+            addedItem = (segue.sourceViewController as! ChoicesTableViewController).selectedItem
+            
         }
     }
 

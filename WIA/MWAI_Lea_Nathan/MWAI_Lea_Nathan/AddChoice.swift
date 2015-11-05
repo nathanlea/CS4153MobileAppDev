@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBAction func saveChoice(sender: AnyObject) {
+class AddChoice: UIViewController {
     
-    }
-    @IBOutlet weak var nameOfTheNewChoice: UITextField!
+    
+    
+    @IBOutlet weak var choiceAddTextField: UITextField!
     
     
     @IBAction func choices(sender: AnyObject) {
@@ -33,11 +32,10 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "addChoiceUnwind") {
+      /*  if(segue.identifier == "addChoice") {
             (segue.destinationViewController as! ChoicesTableViewController).newChoice = nameOfTheNewChoice.text!
-        }
+        }*/
     }
-
 
 }
 

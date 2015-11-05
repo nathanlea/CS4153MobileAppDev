@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E209D391BE92CE600B7999A /* AddChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E209D381BE92CE600B7999A /* AddChoiceViewController.swift */; };
 		D816028B1BE70F45000342E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D816028A1BE70F45000342E0 /* AppDelegate.swift */; };
-		D816028D1BE70F45000342E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D816028C1BE70F45000342E0 /* ViewController.swift */; };
+		D816028D1BE70F45000342E0 /* AddChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D816028C1BE70F45000342E0 /* AddChoice.swift */; };
 		D81602901BE70F45000342E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D816028E1BE70F45000342E0 /* Main.storyboard */; };
 		D81602931BE70F45000342E0 /* MWAI_Lea_Nathan.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D81602911BE70F45000342E0 /* MWAI_Lea_Nathan.xcdatamodeld */; };
 		D81602951BE70F45000342E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D81602941BE70F45000342E0 /* Assets.xcassets */; };
@@ -37,9 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E209D381BE92CE600B7999A /* AddChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChoiceViewController.swift; sourceTree = "<group>"; };
 		D81602871BE70F45000342E0 /* MWAI_Lea_Nathan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MWAI_Lea_Nathan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D816028A1BE70F45000342E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D816028C1BE70F45000342E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D816028C1BE70F45000342E0 /* AddChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoice.swift; sourceTree = "<group>"; };
 		D816028F1BE70F45000342E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D81602921BE70F45000342E0 /* MWAI_Lea_Nathan.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MWAI_Lea_Nathan.xcdatamodel; sourceTree = "<group>"; };
 		D81602941BE70F45000342E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,8 +106,9 @@
 			isa = PBXGroup;
 			children = (
 				D816028A1BE70F45000342E0 /* AppDelegate.swift */,
-				D816028C1BE70F45000342E0 /* ViewController.swift */,
+				D816028C1BE70F45000342E0 /* AddChoice.swift */,
 				D816028E1BE70F45000342E0 /* Main.storyboard */,
+				0E209D381BE92CE600B7999A /* AddChoiceViewController.swift */,
 				D8A148E51BE7AC4C00A7661D /* ShoppingLostTableViewController.swift */,
 				D8A148E71BE7AC6E00A7661D /* ChoicesTableViewController.swift */,
 				D81602941BE70F45000342E0 /* Assets.xcassets */,
@@ -268,7 +271,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D816028D1BE70F45000342E0 /* ViewController.swift in Sources */,
+				D816028D1BE70F45000342E0 /* AddChoice.swift in Sources */,
+				0E209D391BE92CE600B7999A /* AddChoiceViewController.swift in Sources */,
 				D8A148E61BE7AC4C00A7661D /* ShoppingLostTableViewController.swift in Sources */,
 				D8A148E81BE7AC6E00A7661D /* ChoicesTableViewController.swift in Sources */,
 				D81602931BE70F45000342E0 /* MWAI_Lea_Nathan.xcdatamodeld in Sources */,
@@ -413,7 +417,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MWAI_Lea_Nathan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "CS4153AppDev.MWAI-Lea-Nathan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -425,7 +429,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = MWAI_Lea_Nathan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "CS4153AppDev.MWAI-Lea-Nathan";
 				PRODUCT_NAME = "$(TARGET_NAME)";

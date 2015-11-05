@@ -31,6 +31,43 @@ class ChoicesTableViewController: UITableViewController {
     var tableData : [[NSManagedObject]] = [[]]
     
     var tableSectionHeaders : [String] = []
+    
+    var selectedItem : String = ""
+    
+    var newChoice : String = "" {
+        didSet {
+            if(newChoice == "") { return }
+            // Get the app delegate.
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+            // Get the managed object context from the app delegate.
+            let context = appDelegate.managedObjectContext
+            
+            // Define the type of entity we are adding.
+            let entity = NSEntityDescription.entityForName("Choices",
+                inManagedObjectContext: context)
+            
+            let course = NSManagedObject(entity: entity!,
+                insertIntoManagedObjectContext: context)
+            
+            // Populate the new managed object with course data.
+            course.setValue(newChoice, forKey: "name")
+        
+            // Save the managed object context contents to the database.
+            do {
+                try context.save()
+            }
+                catch let error as NSError {
+                    print("Cannot save - \(error), \(error.userInfo)")
+            }
+            tableSectionHeaders.removeAll()
+            tableSectionHeaders = []
+            tableData.removeAll()
+            tableView.reloadData()
+            tableData = [[]]
+            viewWillAppear(true)
+            tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,6 +130,9 @@ class ChoicesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    func addToShoppingList() {
+        performSegueWithIdentifier("addChoiceSegue", sender: self)
+    }
     
     override func viewWillAppear(animated: Bool) {
         // Get the app delegate.
@@ -168,16 +208,18 @@ class ChoicesTableViewController: UITableViewController {
         return cell
     }
     
-   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("unwind2")
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        selectedItem = tableData[indexPath.section][indexPath.row].valueForKey("name") as! String
+        return indexPath
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        print(6)
-        print(segue.identifier)
         if segue.identifier == "unwind" {
-            print("\(self) \(__FUNCTION__)")
+            (segue.destinationViewController as! ShoppingLostTableViewController).addedItem = selectedItem
         }
+    }
+    
+    @IBAction func addChoiceUnwind(sender:UIStoryboardSegue) {
     }
     
     /*
